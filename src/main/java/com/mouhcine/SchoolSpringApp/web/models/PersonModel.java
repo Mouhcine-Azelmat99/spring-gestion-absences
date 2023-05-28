@@ -3,7 +3,7 @@ package com.mouhcine.SchoolSpringApp.web.models;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-public class UtilisateurModel {
+public class PersonModel {
 
 	public static final int TYPE_PROF = 1;
 	public static final int TYPE_STUDENT = 2;
@@ -39,15 +39,15 @@ public class UtilisateurModel {
 
 	private String grade;
 
-	private int typeUtilisateur;
+	private int typePerson;
 	
 	
-	public UtilisateurModel() {
+	public PersonModel() {
 		
 	}
 
-	public UtilisateurModel(int typeUtilisateur) {
-		this.typeUtilisateur = typeUtilisateur;
+	public PersonModel(int typePerson) {
+		this.typePerson = typePerson;
 	}
 
 
@@ -140,12 +140,12 @@ public class UtilisateurModel {
 		this.grade = grade;
 	}
 
-	public int getTypeUtilisateur() {
-		return typeUtilisateur;
+	public int getTypePerson() {
+		return typePerson;
 	}
 
-	public void setTypeUtilisateur(int typeUtilisateur) {
-		this.typeUtilisateur = typeUtilisateur;
+	public void setTypePerson(int typePerson) {
+		this.typePerson = typePerson;
 	}
 
 	public static int getTypeProf() {
@@ -170,10 +170,10 @@ public class UtilisateurModel {
 
 	@Override
 	public String toString() {
-		return "UtilisateurModel [idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", cne="
+		return "PersonModel [idPerson=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin + ", cne="
 				+ cne + ", email=" + email + ", telephone=" + telephone + ", nomArabe=" + nomArabe + ", prenomArabe="
-				+ prenomArabe + ", photo=" + photo + ", specialite=" + specialite + ", grade=" + grade + ", typeUtilisateur="
-				+ typeUtilisateur + "]";
+				+ prenomArabe + ", photo=" + photo + ", specialite=" + specialite + ", grade=" + grade + ", typePerson="
+				+ typePerson + "]";
 	}
 
 }

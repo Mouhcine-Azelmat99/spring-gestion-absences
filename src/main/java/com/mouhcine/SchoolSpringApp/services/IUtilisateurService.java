@@ -1,6 +1,7 @@
 package com.mouhcine.SchoolSpringApp.services;
 
 import com.mouhcine.SchoolSpringApp.bo.Utilisateur;
+import com.mouhcine.SchoolSpringApp.utils.ExcelExporter;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,12 +14,11 @@ public interface IUtilisateurService {
 
     public void updateUtilisateur(Utilisateur utilisateur);
 
-    public Optional<Utilisateur> getUtilisateurById(Long id);
+    public Utilisateur getUtilisateurById(Long id);
 
     public Utilisateur getUtilisateurByCin(String cin);
 
-//    public ExcelExporter preparePersonExport(List<Utilisateur> persons);
-
+    public ExcelExporter prepareUtilisateurExport(List<Utilisateur> users);
 
 
 }

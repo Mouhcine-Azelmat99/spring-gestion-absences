@@ -58,10 +58,31 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Password generator -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.glassfish.web</groupId>-->
+<!--			<artifactId>jakarta.servlet.jsp.jstl</artifactId>-->
+<!--			<version>2.0.0</version>-->
+<!--		</dependency>-->
+
+		<!-- POI : (Office documents handling) -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -73,14 +94,14 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-	</dependencies>
 
-	<!-- Password generator -->
-	<dependency>
-		<groupId>org.passay</groupId>
-		<artifactId>passay</artifactId>
-		<version>1.6.0</version>
-	</dependency>
+		<!-- Password generator -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+	</dependencies>
 
 
 	<build>

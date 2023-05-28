@@ -20,7 +20,9 @@ public class Enseignant extends Utilisateur {
 		this.specialite = specialite;
 	}
 
-
+	public String findType(){
+		return "Enseignant";
+	}
 
 
 

@@ -22,18 +22,17 @@
 
 
 	<div>
-			<h3>Mise à jour d'un 
-				<c:if test="${personModel.typePerson== 1}" var="variable">
-					Prof
-				</c:if>
-				<c:if test="${personModel.typePerson== 2}" var="variable">
-					Etudiant
-				</c:if>
-				<c:if test="${personModel.typePerson== 3}" var="variable">
-					Cadre Admin
-				</c:if>
-		
-		
+		<h3>Mise à jour d'un
+			<c:if test="${personModel.typePerson== 1}" var="variable">
+				Prof
+			</c:if>
+			<c:if test="${personModel.typePerson== 2}" var="variable">
+				Etudiant
+			</c:if>
+			<c:if test="${personModel.typePerson== 3}" var="variable">
+				Cadre Admin
+			</c:if>
+
 		</h3>
 	</div>
 	<div>
@@ -43,8 +42,8 @@
 		</c:if>
 
 		<f:form action="${pageContext.request.contextPath}/admin/updatePerson"
-			method="POST" modelAttribute="personModel">
-			<f:hidden path="idUtilisateur" />
+				method="POST" modelAttribute="personModel">
+			<f:hidden path="idUtilisateur" value="${personModel.getIdUtilisateur()}" />
 
 			<f:hidden path="typePerson" />
 
@@ -52,14 +51,14 @@
 				<div class="col">
 					<label>CIN</label>
 					<f:input path="cin" type="text" class="form-control"
-						placeholder="cin" />
+							 placeholder="cin" />
 					<f:errors path="cin" class="text-danger" />
 				</div>
 
 				<div class="col">
 					<label>Nom</label>
 					<f:input path="nom" type="text" class="form-control"
-						placeholder="nom" />
+							 placeholder="nom" />
 					<f:errors path="nom" class="text-danger" />
 				</div>
 			</div>
@@ -69,14 +68,14 @@
 				<div class="col">
 					<label>Prénom</label>
 					<f:input path="prenom" type="text" class="form-control"
-						placeholder="prenom" />
+							 placeholder="prenom" />
 					<f:errors path="prenom" class="text-danger" />
 				</div>
 
 				<div class="col">
 					<label>Télé</label>
 					<f:input path="telephone" type="text" class="form-control"
-						placeholder="telephone" />
+							 placeholder="telephone" />
 					<f:errors path="telephone" class="text-danger" />
 				</div>
 			</div>
@@ -92,7 +91,7 @@
 					<div class="col">
 						<label>Spécialité</label>
 						<f:input path="specialite" type="text" class="form-control"
-							placeholder="Spécialité" />
+								 placeholder="Spécialité" />
 						<f:errors path="specialite" class="text-danger" />
 					</div>
 				</c:if>
@@ -100,16 +99,16 @@
 					<div class="col">
 						<label>CNE</label>
 						<f:input path="cne" type="text" class="form-control"
-							placeholder="cne" />
+								 placeholder="cne" />
 						<f:errors path="cne" class="text-danger" />
 					</div>
 				</c:if>
 				<c:if test="${personModel.typePerson== 3}"
-					var="variable">
+					  var="variable">
 					<div class="col">
 						<label>Grade</label>
 						<f:input path="grade" type="text" class="form-control"
-							placeholder="grade" />
+								 placeholder="grade" />
 						<f:errors path="grade" class="text-danger" />
 					</div>
 				</c:if>
@@ -126,13 +125,13 @@
 				<div class="col">
 					<label>Nom Arabe</label>
 					<f:input path="nomArabe" type="text" class="form-control"
-						placeholder="nomArabe" />
+							 placeholder="nomArabe" />
 					<f:errors path="nomArabe" class="text-danger" />
 				</div>
 				<div class="col">
 					<label>Prénom Arabe</label>
 					<f:input path="prenomArabe" type="text" class="form-control"
-						placeholder="prenomArabe" />
+							 placeholder="prenomArabe" />
 					<f:errors path="prenomArabe" class="text-danger" />
 				</div>
 
@@ -147,4 +146,4 @@
 
 
 
-	<jsp:include page="../fragments/adminfooter.jsp" />
+<jsp:include page="../fragments/adminfooter.jsp" />

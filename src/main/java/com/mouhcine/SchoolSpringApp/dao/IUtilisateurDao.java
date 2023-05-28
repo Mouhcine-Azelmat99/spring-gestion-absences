@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUtilisateurDao extends JpaRepository<Utilisateur,Long> {
+public interface IUtilisateurDao extends JpaRepository<Utilisateur,Long> , GenericJpa<Utilisateur, Long> {
     public Utilisateur findByCin(String cin);
 }

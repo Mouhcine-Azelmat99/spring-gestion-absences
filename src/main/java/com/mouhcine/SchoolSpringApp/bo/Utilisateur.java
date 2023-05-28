@@ -56,4 +56,17 @@ public class Utilisateur {
                 + prenomArabe + ", photo=" + photo + "]";
     }
 
+    public String findType(){
+        return "Utilisateur";
+    }
+    public String getCne() {
+        return "";
+    }
+    public String getSpecialite() {
+        return "";
+    }
+    public String getGrade() {
+        return "";
+    }
+
 }

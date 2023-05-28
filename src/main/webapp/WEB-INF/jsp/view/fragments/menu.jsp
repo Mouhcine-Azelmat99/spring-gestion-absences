@@ -57,8 +57,8 @@
 			   	<li class="dropdown-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/admin/exportPersons">Export
 						Persons</a></li>
-			</ul></li>
-
+			</ul>
+		</li>
 
 
 		<li class="nav-item"><form
@@ -75,8 +75,7 @@
 				<button type="submit" class="btn btn-link">logout</button>
 
 			</f:form></li>
-
-	</ul>
+		</ul>
 
 
 

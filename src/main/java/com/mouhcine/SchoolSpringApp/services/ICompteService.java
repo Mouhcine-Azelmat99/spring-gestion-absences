@@ -3,9 +3,10 @@ package com.mouhcine.SchoolSpringApp.services;
 
 import com.mouhcine.SchoolSpringApp.bo.Compte;
 import com.mouhcine.SchoolSpringApp.bo.Role;
+import com.mouhcine.SchoolSpringApp.utils.ExcelExporter;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 public interface ICompteService {
 	
@@ -18,5 +19,5 @@ public interface ICompteService {
 	
 	public String createUser(Long idRole, Long idPerson);
 	
-//	public ExcelExporter prepareCompteExport(List<Compte> comptes) ;
+	public ExcelExporter prepareCompteExport(List<Compte> comptes) ;
 }

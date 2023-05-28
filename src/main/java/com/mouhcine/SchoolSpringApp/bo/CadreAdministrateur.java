@@ -15,5 +15,9 @@ public class CadreAdministrateur extends Utilisateur {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	@Override
+	public String findType(){
+		return "CadreAdministrateur";
+	}
 
 }

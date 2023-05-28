@@ -49,6 +49,10 @@ public class Etudiant extends Utilisateur {
 		return "Etudiant [cne=" + cne + ", dateNaissance=" + dateNaissance + ", inscriptions=" + inscriptions + "]";
 	}
 
+	@Override
+	public String findType(){
+		return "Etudiant";
+	}
 
 	
 
