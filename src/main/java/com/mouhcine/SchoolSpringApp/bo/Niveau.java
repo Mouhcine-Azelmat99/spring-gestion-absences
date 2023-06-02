@@ -17,8 +17,8 @@ public class Niveau {
 	@OneToMany(mappedBy = "niveau" , cascade = CascadeType.ALL, targetEntity = Module.class)
 	private List<Module> modules;
 
-	@OneToMany(mappedBy = "niveau" , cascade = CascadeType.ALL, targetEntity = InscriptionAnnuelle.class)
-	private List<InscriptionAnnuelle> inscriptions;
+	@OneToMany(mappedBy = "niveau" , cascade = CascadeType.ALL, targetEntity = Inscription.class)
+	private List<Inscription> inscriptions;
 
 	@ManyToOne
 	@JoinColumn(name="idFiliere")
@@ -56,11 +56,11 @@ public class Niveau {
 		this.modules = modules;
 	}
 
-	public List<InscriptionAnnuelle> getInscriptions() {
+	public List<Inscription> getInscriptions() {
 		return inscriptions;
 	}
 
-	public void setInscriptions(List<InscriptionAnnuelle> inscriptions) {
+	public void setInscriptions(List<Inscription> inscriptions) {
 		this.inscriptions = inscriptions;
 	}
 

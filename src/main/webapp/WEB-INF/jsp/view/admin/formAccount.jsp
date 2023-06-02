@@ -29,22 +29,21 @@
 	<div>
 
 
+		<form action="${pageContext.request.contextPath}/admin/addAccount"
+			method="POST">
 
-		<f:form action="${pageContext.request.contextPath}/admin/addAccount"
-			method="POST" modelAttribute="accountModel">
-
-			<f:hidden path="personId" />
-
-
+<%--			<f:hidden path="utilisateurId" />--%>
+			<input type="hidden" name="utilisateurId" value="${accountModel.getUtilisateurId()}">
 			<div class="row">
 
 				<div class="col">
 					<label>Please select the user role</label>
 
-					<f:select path="roleId" multiple="false" size="1"
-						class="form-control">
-						<f:options items="${roleList}" itemValue="idRole" itemLabel="nomRole" />
-					</f:select>
+					<select name="roleId" class="form-control">
+						<option value="1">Admin</option>
+						<option value="2">User</option>
+<%--						<f:options items="${roleList}" itemValue="idRole" itemLabel="nomRole" />--%>
+					</select>
 
 
 				</div>
@@ -56,7 +55,7 @@
 				<button type="reset" class="btn btn-secondary">Rest</button>
 			</div>
 
-		</f:form>
+		</form>
 	</div>
 
 <!-- 	<div> -->

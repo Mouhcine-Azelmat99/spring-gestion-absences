@@ -51,6 +51,11 @@ public class UtilisateurServiceImp implements IUtilisateurService {
     }
 
     @Override
+    public Utilisateur getUtilisateurByNom(String nom) {
+        return utilisateurDao.getEntityByColValue(Utilisateur.class, "nom", nom);
+    }
+
+    @Override
     public ExcelExporter prepareUtilisateurExport(List<Utilisateur> users) {
         String[] columnNames = new String[] { "Nom", "Prénom", "CIN", "Email", "Télé" };
         String[][] data = new String[users.size()][5];

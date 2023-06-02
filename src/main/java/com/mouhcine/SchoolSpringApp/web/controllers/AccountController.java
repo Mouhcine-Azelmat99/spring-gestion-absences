@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -72,18 +73,20 @@ public class AccountController {
 	
 	//Cette méthode permet de créer un comote
 	@PostMapping("addAccount")
-	public String addAccount(@ModelAttribute("accountModel") AccountModel accountModel, Model model) {
+	public String addAccount(HttpServletRequest rq, Model model) {
 
 		
 		//La création du compte est implémenter au niveau service
 		//Il suffit de passer l'id du role et l'id de personne
 		//à la couche service
-		String password = userService.createUser(accountModel.getRoleId(), accountModel.getUtilisateurId());
+//		System.out.println("model account = "+accountModel);
+		String password = userService.createUser(Long.valueOf(rq.getParameter("roleId")),Long.valueOf(rq.getParameter("utilisateurId")));
 
 		//On affiche le mot de passe dans la vue 
-		accountModel.setPassword(password);
+//		accountModel.setPassword(password);
 		
 		//On affiche également la liste des comptes dans la vue
+		model.addAttribute("password", password);
 		model.addAttribute("accountList", userService.getAllAccounts());
 
 		

@@ -1,9 +1,8 @@
 package com.mouhcine.SchoolSpringApp.web.controllers;
 
-import com.mouhcine.SchoolSpringApp.bo.CadreAdministrateur;
-import com.mouhcine.SchoolSpringApp.bo.Enseignant;
-import com.mouhcine.SchoolSpringApp.bo.Etudiant;
-import com.mouhcine.SchoolSpringApp.bo.Utilisateur;
+import com.mouhcine.SchoolSpringApp.bo.*;
+import com.mouhcine.SchoolSpringApp.services.IInscriptionService;
+import com.mouhcine.SchoolSpringApp.services.INiveauService;
 import com.mouhcine.SchoolSpringApp.services.IUtilisateurService;
 import com.mouhcine.SchoolSpringApp.utils.ExcelExporter;
 import com.mouhcine.SchoolSpringApp.web.models.PersonModel;
@@ -24,6 +23,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +34,12 @@ public class UtilisateurAdminController {
 
 	@Autowired
 	private IUtilisateurService utilisateurService;
+
+	@Autowired
+	private INiveauService niveauService;
+
+	@Autowired
+	private IInscriptionService inscriptionService;
 
 	@Autowired
 	private HttpSession httpSession;
@@ -53,7 +59,7 @@ public class UtilisateurAdminController {
 
 		// Nous avons choisit d'utiliser une classe modèle personnalisée
 		// définie par PersonModel pour une meilleur flexibilité
-
+		List<Niveau> niveauxList=niveauService.getAll();
 		List<Utilisateur> persons = utilisateurService.getAll();
 		List<PersonModel> modelPersons = new ArrayList<PersonModel>();
 		// On copie les données des personnes vers le modèle
@@ -79,7 +85,7 @@ public class UtilisateurAdminController {
 				modelPersons.add(pm);
 			}
 		}
-
+		model.addAttribute("niveauxList",niveauxList);
 		// Mettre la liste des personnes dans le modèle de Spring MVC
 		model.addAttribute("personList", modelPersons);
 
@@ -107,8 +113,15 @@ public class UtilisateurAdminController {
 		if (person.getTypePerson() == PersonModel.TYPE_STUDENT) {
 			Etudiant etd = new Etudiant();
 			BeanUtils.copyProperties(person, etd);
-
+			Inscription inscription = new Inscription();
+			LocalDate currentDate = LocalDate.now();
+			int currentYear = currentDate.getYear();
+			inscription.setAnnee(currentYear);
+			inscription.setEtat(1);
+			inscription.setEtudiant(etd);
+			inscription.setNiveau(person.getNiveau());
 			utilisateurService.addUtilisateur(etd);
+			inscriptionService.add(inscription);
 
 		}
 		// Copier les données de l'objet PersonModel vers l'objet Enseignant (cas du
@@ -257,6 +270,50 @@ public class UtilisateurAdminController {
 			// Initialiser le modele avec la personne
 			model.addAttribute("personList", modelPersons);
 		}
+		return "admin/listPersons";
+	}
+
+	@RequestMapping(value = "serachPersonByNom", method = RequestMethod.GET)
+	public String serachPersonByNom(@RequestParam String search, Model model) {
+
+		// On reoit comme paramètre l'id de la personne à mettre à jour
+		Utilisateur utlByNom = utilisateurService.getUtilisateurByNom(search);
+		Utilisateur utlByCin = utilisateurService.getUtilisateurByCin(search);
+
+		if (utlByNom != null) {
+			PersonModel pm = new PersonModel();
+			if (utlByNom instanceof Etudiant) {
+				BeanUtils.copyProperties((Etudiant) utlByNom, pm);
+				pm.setTypePerson(PersonModel.TYPE_STUDENT);
+			} else if (utlByNom instanceof Enseignant) {
+				BeanUtils.copyProperties((Enseignant) utlByNom, pm);
+				pm.setTypePerson(PersonModel.TYPE_PROF);
+			} else if (utlByNom instanceof CadreAdministrateur) {
+				BeanUtils.copyProperties((CadreAdministrateur) utlByNom, pm);
+				pm.setTypePerson(PersonModel.TYPE_CADRE_ADMIN);
+			}
+			List<PersonModel> modelPersons = new ArrayList<PersonModel>();
+			modelPersons.add(pm);
+			model.addAttribute("personList", modelPersons);
+		}else if(utlByCin != null){
+			PersonModel pm = new PersonModel();
+			if (utlByCin instanceof Etudiant) {
+				BeanUtils.copyProperties((Etudiant) utlByCin, pm);
+				pm.setTypePerson(PersonModel.TYPE_STUDENT);
+			} else if (utlByCin instanceof Enseignant) {
+				BeanUtils.copyProperties((Enseignant) utlByCin, pm);
+				pm.setTypePerson(PersonModel.TYPE_PROF);
+			} else if (utlByCin instanceof CadreAdministrateur) {
+				BeanUtils.copyProperties((CadreAdministrateur) utlByCin, pm);
+				pm.setTypePerson(PersonModel.TYPE_CADRE_ADMIN);
+			}
+			List<PersonModel> modelPersons = new ArrayList<PersonModel>();
+			modelPersons.add(pm);
+			model.addAttribute("personList", modelPersons);
+		}else{
+			model.addAttribute("personModel", new ArrayList<PersonModel>());
+		}
+
 		return "admin/listPersons";
 	}
 

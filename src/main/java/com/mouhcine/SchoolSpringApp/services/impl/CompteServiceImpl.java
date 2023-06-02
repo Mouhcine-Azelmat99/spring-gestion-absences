@@ -50,9 +50,10 @@ public class CompteServiceImpl implements ICompteService {
 
 		// determiner la personne
 		userAccount.setProprietaire(person);
-
+		Role role = roleDao.getById(idRole);
+		System.out.println("role +"+role+"  utilisateur = "+person);
 		// Affecter le role
-		userAccount.setRole(roleDao.getById(idRole));
+		userAccount.setRole(role);
 
 		// génrer le mot de passe aléatoirement
 		String generatedPass = generatePassayPassword();
@@ -68,6 +69,7 @@ public class CompteServiceImpl implements ICompteService {
 
 		Compte account = userDao.searchByLogin(login);
 
+//		Login must be unique else will be duplicate by number
 		if (account == null) {
 
 			userAccount.setLogin(login);
@@ -124,8 +126,6 @@ public class CompteServiceImpl implements ICompteService {
 
 	@Override
 	public Compte getAccountByUserName(String login) {
-	
-
 		return userDao.searchByLogin(login);
 	}
 

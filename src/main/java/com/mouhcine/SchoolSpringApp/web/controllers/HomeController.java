@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
@@ -15,7 +16,7 @@ public class HomeController {
     CompteDaoCustomImpl compteDaoCustom;
 
     @RequestMapping("/")
-    public String index(Model model) {
+    public String index() {
         Compte compte = compteDaoCustom.searchByLogin("admin");
         System.out.println(compte);
         return "index";

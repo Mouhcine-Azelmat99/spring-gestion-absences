@@ -73,6 +73,7 @@
 					<f:errors path="cne" class="text-danger" />
 				</div>
 			</c:if>
+
 			<c:if test="${personModel.typePerson== PersonModel.TYPE_CADRE_ADMIN}" var="variable">
 				<div class="col">
 					<label>Grade</label>
@@ -127,11 +128,20 @@
 					<f:errors path="prenomArabe" class="text-danger" />
 				</div>
 
+				<c:if test="${personModel.typePerson== PersonModel.TYPE_STUDENT}" var="variable">
+					<div class="col">
+						<label>Niveau</label>
+						<f:select path="niveau" multiple="false" size="1" class="form-control">
+							<f:options items="${niveauxList}" itemValue="idNiveau" itemLabel="titre" />
+						</f:select>
+					</div>
+				</c:if>
+
 
 			</div>
 
 
-			<div style="text-align: right">
+			<div style="text-align: right" class="my-4">
 				<button type="submit" class="btn btn-primary">Enregistrer</button>
 				<button type="reset" class="btn btn-secondary">Annuler</button>
 			</div>
@@ -175,13 +185,9 @@
 
 						<td>
 							<ul>
-								<li><a
-										href="${pageContext.request.contextPath}/admin/deletePerson/${p.idUtilisateur}">Delete</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/deletePerson/${p.idUtilisateur}">Delete</a></li>
 
-								<li><a
-										href="${pageContext.request.contextPath}/admin/updatePersonForm/${p.idUtilisateur}">Update</a></li>
-
-
+								<li><a href="${pageContext.request.contextPath}/admin/updatePersonForm/${p.idUtilisateur}">Update</a></li>
 							</ul>
 						</td>
 

@@ -1,5 +1,7 @@
 package com.mouhcine.SchoolSpringApp.web.models;
 
+import com.mouhcine.SchoolSpringApp.bo.Niveau;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -29,6 +31,14 @@ public class PersonModel {
 
 	private String telephone;
 
+	public Niveau getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
+	}
+
 	private String nomArabe;
 
 	private String prenomArabe;
@@ -40,6 +50,8 @@ public class PersonModel {
 	private String grade;
 
 	private int typePerson;
+
+	private Niveau niveau;
 	
 	
 	public PersonModel() {

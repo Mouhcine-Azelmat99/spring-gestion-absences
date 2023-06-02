@@ -1,17 +1,11 @@
 package com.mouhcine.SchoolSpringApp.bo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
-
-/**
- * Represente une filière.
- * 
- * 
- * @author T. BOUDAA
- *
- */
 
 @Entity
 public class Filiere {
@@ -27,6 +21,12 @@ public class Filiere {
 	private int anneeaccreditation;
 
 	private int anneeFinaccreditation;
+
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL, targetEntity = Coordination.class)
+	private Set<Coordination> coordinations;
+
 
 	@OneToMany(mappedBy = "filiere" ,  cascade = CascadeType.ALL, targetEntity = Niveau.class)
 	private Set<Niveau> niveaux;
@@ -74,6 +74,9 @@ public class Filiere {
 
 	public Set<Niveau> getNiveaux() {
 		return niveaux;
+	}
+	public Set<Coordination> getCoordinations() {
+		return coordinations;
 	}
 
 	public void setNiveaux(Set<Niveau> niveaux) {

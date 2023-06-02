@@ -5,7 +5,7 @@ package com.mouhcine.SchoolSpringApp.web.models;
 //utilisée pour créer les comptes
 //C'est une classe non persistante
 public class AccountModel {
-	
+
 	private String username;
 	
 	private String password;
@@ -67,7 +67,15 @@ public class AccountModel {
 		this.utilisateurId = utilisateurId;
 	}
 
-	
-	
+
+	@Override
+	public String toString() {
+		return "AccountModel{" +
+				"username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", roleId=" + roleId +
+				", utilisateurId=" + utilisateurId +
+				'}';
+	}
 	
 }

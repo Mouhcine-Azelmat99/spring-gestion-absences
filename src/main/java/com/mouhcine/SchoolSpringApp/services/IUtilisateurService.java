@@ -17,6 +17,8 @@ public interface IUtilisateurService {
     public Utilisateur getUtilisateurById(Long id);
 
     public Utilisateur getUtilisateurByCin(String cin);
+    public Utilisateur getUtilisateurByNom(String nom);
+
 
     public ExcelExporter prepareUtilisateurExport(List<Utilisateur> users);
 

@@ -25,9 +25,9 @@
 	<div>
 
 
-		<c:if test="${accountModel.password !=null}">
+		<c:if test="${password !=null}">
 			<div class="alert alert-success col-6">User created. The
-				password generated is : ${accountModel.password}</div>
+				password generated is : ${password}</div>
 
 		</c:if>
 

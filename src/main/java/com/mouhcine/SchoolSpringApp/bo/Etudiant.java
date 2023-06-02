@@ -17,7 +17,7 @@ public class Etudiant extends Utilisateur {
 	private Date dateNaissance;
 
 	@OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL , targetEntity = InscriptionAnnuelle.class)
-	private List<InscriptionAnnuelle> inscriptions;
+	private List<Inscription> inscriptions;
 
 
 	public String getCne() {
@@ -36,11 +36,11 @@ public class Etudiant extends Utilisateur {
 		this.dateNaissance = dateNaissance;
 	}
 
-	public List<InscriptionAnnuelle> getInscriptions() {
+	public List<Inscription> getInscriptions() {
 		return inscriptions;
 	}
 
-	public void setInscriptions(List<InscriptionAnnuelle> inscriptions) {
+	public void setInscriptions(List<Inscription> inscriptions) {
 		this.inscriptions = inscriptions;
 	}
 
